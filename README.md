@@ -1,10 +1,5 @@
 # System Automation & Utility Tools
 
-## Why this repo?
-I believe if you have to do a task more than twice, you should automate it. This repository is a collection of scripts I wrote to handle boring daily tasks—like organizing files, sharing Wi-Fi, or monitoring hardware—so I don't have to do them manually.
-
-It demonstrates my approach to **Python scripting, Database interactions (SQLite), and Low-level Shell scripting.**
-
 ## 📂 What's Inside?
 
 ### 1. File System Indexer (SQLite)
