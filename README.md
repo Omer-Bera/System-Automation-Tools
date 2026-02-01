@@ -1,44 +1,36 @@
 # System Automation & Utility Tools
 
-A collection of system utility scripts designed for task automation, hardware monitoring, and file management. These tools demonstrate practical usage of Python scripting, database interactions (SQLite), and Shell scripting for system administration tasks.
+## Why this repo?
+I believe if you have to do a task more than twice, you should automate it. This repository is a collection of scripts I wrote to handle boring daily tasks—like organizing files, sharing Wi-Fi, or monitoring hardware—so I don't have to do them manually.
 
-**Technologies:** Python 3, SQLite, Bash/Zsh, Pillow (PIL), System I/O.
+It demonstrates my approach to **Python scripting, Database interactions (SQLite), and Low-level Shell scripting.**
 
-## 📂 Repository Contents
+## 📂 What's Inside?
 
-### 1. File System Indexer (SQLite Optimized)
+### 1. File System Indexer (SQLite)
+Indexing millions of files can be slow. I wanted a custom tool that could crawl my entire disk and store metadata efficiently.
 * **File:** `filesystem_indexer_sqlite.py`
-* **Description:** A high-performance file crawler that indexes the local file system into an SQLite database.
-* **Key Features:**
-    * Implements **batch insertion** (`executemany`) for optimized database write performance.
-    * Uses `os.walk` for recursive directory traversal.
-    * Features a real-time progress bar (TQDM) for user experience (UX).
-    * Handles database connection lifecycles safely (try/finally blocks).
+* **The "Engineer" Touch:** I used `executemany` for batch insertions instead of writing row-by-row. This drastically reduced the I/O overhead. Also added a progress bar (`tqdm`) because staring at a frozen cursor is annoying.
 
 ### 2. Wi-Fi QR Code Generator
+Sharing complex Wi-Fi passwords with guests is a pain. I built this tool to generate a scan-to-connect QR code.
 * **File:** `wifi_qr_generator.py`
-* **Description:** A utility to generate connectable Wi-Fi QR codes with embedded custom logos.
-* **Key Features:**
-    * Leverages image processing (`Pillow`) to resize and overlay logos onto QR codes.
-    * Configures QR error correction levels to maintain readability despite image manipulation.
+* **The "Engineer" Touch:** It doesn't just create a QR code; it uses `Pillow` to embed a custom logo in the center and adjusts the Error Correction Level (ECC) so the code remains scannable even with the image overlay.
 
-### 3. macOS Battery Logger
+### 3. macOS Battery Logger (Shell Script)
+I wanted to analyze my laptop's power consumption in real-time without installing heavy third-party apps.
 * **File:** `macos_battery_logger.sh`
-* **Description:** A shell script for monitoring power consumption metrics on macOS devices.
-* **Key Features:**
-    * Parses raw `ioreg` system output using `awk` for real-time voltage and amperage data.
-    * Logs power usage (Watts) to a CSV file for time-series analysis.
-    * Demonstrates proficiency in Unix/Linux piping and text processing.
+* **The "Engineer" Touch:** It parses raw `ioreg` system output using `awk` to extract precise voltage and amperage data, then calculates wattage on the fly and logs it to a CSV for analysis.
 
-## 🚀 How to Run
+## 🚀 Usage
 
 ### Python Tools
 ```bash
-# Install dependencies
+# Install requirements
 pip install tqdm pillow qrcode
 
-# Run indexer
+# Index your files
 python3 filesystem_indexer_sqlite.py
 
-# Generate QR
+# Create a Wi-Fi QR
 python3 wifi_qr_generator.py
