@@ -1,31 +1,18 @@
-# System Automation & Utility Tools
+# System Automation Tools
 
-## 📂 What's Inside?
+This repository contains Python and Shell scripts that I wrote to automate personal tasks and explore system-level interactions.
 
-### 1. File System Indexer (SQLite)
-Indexing millions of files can be slow. I wanted a custom tool that could crawl my entire disk and store metadata efficiently.
-* **File:** `filesystem_indexer_sqlite.py`
-* **The "Engineer" Touch:** I used `executemany` for batch insertions instead of writing row-by-row. This drastically reduced the I/O overhead. Also added a progress bar (`tqdm`) because staring at a frozen cursor is annoying.
+Please note that these scripts are written for educational and personal use.
 
-### 2. Wi-Fi QR Code Generator
-Sharing complex Wi-Fi passwords with guests is a pain. I built this tool to generate a scan-to-connect QR code.
-* **File:** `wifi_qr_generator.py`
-* **The "Engineer" Touch:** It doesn't just create a QR code; it uses `Pillow` to embed a custom logo in the center and adjusts the Error Correction Level (ECC) so the code remains scannable even with the image overlay.
+## Files
 
-### 3. macOS Battery Logger (Shell Script)
-I wanted to analyze my laptop's power consumption in real-time without installing heavy third-party apps.
-* **File:** `macos_battery_logger.sh`
-* **The "Engineer" Touch:** It parses raw `ioreg` system output using `awk` to extract precise voltage and amperage data, then calculates wattage on the fly and logs it to a CSV for analysis.
+* **`filesystem_indexer_sqlite.py`**: A Python script that crawls the home directory and indexes file metadata into an SQLite database for fast querying.
+* **`wifi_qr_generator.py`**: Generates scannable Wi-Fi QR codes with custom logo embedding using the `qrcode` and `Pillow` libraries.
+* **`macos_battery_logger.sh`**: A Zsh script that parses `ioreg` output to log real-time battery voltage and amperage data to a CSV file.
 
-## 🚀 Usage
+## Usage
 
-### Python Tools
+Install the required Python packages:
+
 ```bash
-# Install requirements
 pip install tqdm pillow qrcode
-
-# Index your files
-python3 filesystem_indexer_sqlite.py
-
-# Create a Wi-Fi QR
-python3 wifi_qr_generator.py
